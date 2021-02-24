@@ -1,0 +1,41 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "description": "Truffle Project",
+  "license": "MIT",
+  "author": "L <d@bears.finance>",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "merge": "sol-merger \"./contracts/**/*.sol\" ./merged_contracts",
+    "test": "rm -rf ./compiled && cross-env NODE_ENV=development truffle compile && cross-env NODE_ENV=development truffle migrate --network bsctestnet",
+    "main": "rm -rf ./compiled && cross-env NODE_ENV=production truffle compile && cross-env NODE_ENV=production truffle migrate --network mainnet",
+    "verify:main": "truffle run verify Timelock@0x919Fae0a9c22e0Ce90eA6655Ec55eB132a86cf4d --network mainnet",
+    "verify:test": "truffle run verify MasterChef@0x1483E9cc9a15bef3C3c750636c0Ef27fBD2870fd KittyToken@0x3037e84a22e8C008391a6029517896518Dc026D2 --network bsctestnet"
+  },
+  "dependencies": {
+    "@nomiclabs/buidler": "^1.4.8",
+    "@openzeppelin/contracts": "3.2.0",
+    "@openzeppelin/contracts-ethereum-package": "^3.0.0",
+    "@truffle/hdwallet-provider": "^1.2.1",
+    "@uniswap/v2-core": "1.0.1",
+    "@uniswap/v2-periphery": "1.1.0-beta.0",
+    "bignumber.js": "8.0.2",
+    "dotenv": "^8.2.0",
+    "global": "^4.4.0",
+    "hardhat": "^2.0.8",
+    "solc": "0.6.6",
+    "truffle": "5.1.51",
+    "web3": "1.2.2"
+  },
+  "devDependencies": {
+    "chai": "4.2.0",
+    "chai-bignumber": "3.0.0",
+    "cross-env": "^7.0.3",
+    "eth-gas-reporter": "0.1.12",
+    "sol-merger": "^3.1.0",
+    "truffle-plugin-verify": "^0.5.4"
+  }
+}
